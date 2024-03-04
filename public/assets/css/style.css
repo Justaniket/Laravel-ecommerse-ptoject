@@ -1,0 +1,47 @@
+.detailinfo{
+    display: flex;
+  
+    text-align: center;
+ }
+ .big-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+ 
+.detailbtn{
+    width: 300px !important;
+
+ margin-bottom: 15px;
+}
+.detailbtns{
+   width: 25px;
+   margin-left: 248px !important;
+   margin-bottom: 10px;
+}
+.detailaddbtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+.quantity{
+    width: 50px !important;
+    height:40px;
+    margin-left: 10px;
+}
+
+.addquantity{
+    height: 25px;
+}
+
+.quantity-input {
+    -moz-appearance: textfield;
+}
+
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
