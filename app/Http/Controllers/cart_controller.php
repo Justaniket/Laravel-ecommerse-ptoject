@@ -16,14 +16,13 @@ class cart_controller extends Controller
             $customerId = auth()->id();
             $productId = $data->input('id');
             $quantity = $data->input('quantity');
-    
-           
-            $existingCartItem = Cart::where('customerId', $customerId)
+         
+           $existingCartItem = Cart::where('customerId', $customerId)
                 ->where('productId', $productId)
                 ->first();
     
             if ($existingCartItem) {
-                // If the product is already in the cart, update the quantity
+                //update the quantity if product is already exist
                 $existingCartItem->quantity += $quantity;
                 $existingCartItem->save();
             } else {
@@ -34,12 +33,8 @@ class cart_controller extends Controller
                 $item->customerId = $customerId;
                 $item->price = $data->input('price');
                 $item->save();
-            }
-    
-            return redirect()->back()->with('success', 'Product added to cart successfully.');
-        }
-    
-        return redirect()->route('user-login')->with('error', 'Please log in to add the product to your cart.');   
+            }return redirect()->back()->with('success', 'Product added to cart successfully.');
+        }return redirect()->route('user-login')->with('error', 'Please log in to add the product to your cart.');   
     }
     
     public function showCart()
@@ -59,8 +54,7 @@ class cart_controller extends Controller
         $cartItem = Cart::find($id);
         if (!$cartItem) {
             return redirect()->back()->with('error', 'Cart item not found.');
-        }
-        if ($cartItem->customerId == auth()->id()) {
+        }if ($cartItem->customerId == auth()->id()) {
             $cartItem->delete();
             return redirect()->back()->with('success', 'Product removed from cart successfully.');
         }

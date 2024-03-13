@@ -18,6 +18,8 @@ use App\Http\Controllers\Admin\product_controller;
 use App\Http\Controllers\userproducts_controller;
 use App\Http\Controllers\usercategory_controller;
 use App\Http\Controllers\cart_controller;
+use App\Http\Controllers\checkout_controller;
+use App\Http\Controllers\thankyou_controller;
 
 
 Route::get('/clear', function () {
@@ -28,9 +30,8 @@ Route::get('/clear', function () {
 });
 
 Route::get('comingsoon', function () { return view('comingsoon'); });
-
+// aniket main page route
  Route::match(['get','post'], '/', [IndexController::class, 'index']);
- Route::match(['get','post'], '/', [IndexController::class, 'index1']);
 
 
 
@@ -64,15 +65,15 @@ Route::get('/user-logout',[UsersController::class, 'logout']);
 
 // All Routes after login
 // Route::group(['middleware'=>['frontlogin']],function(){
-Route::middleware([frontlogin::class])->group(function () {   
-    Route::match(['get','post'], 'users/dashboard', [UsersController::class, 'dashboard']); 
-    Route::match(['get','post'], 'users/profile', [UsersController::class, 'viewProfile']);
-    Route::match(['get','post'], 'user/profile-update', [UsersController::class, 'userProfileUpdate']); 
+// Route::middleware([frontlogin::class])->group(function () {   
+//     Route::match(['get','post'], 'users/dashboard', [UsersController::class, 'dashboard']); 
+//     Route::match(['get','post'], 'users/profile', [UsersController::class, 'viewProfile']);
+//     Route::match(['get','post'], 'user/profile-update', [UsersController::class, 'userProfileUpdate']); 
 
 
  
   
-});
+// });
 
 
 
@@ -106,8 +107,7 @@ Route::middleware([Adminlogin::class])->group(function () {
       // update
       Route::post('/admin/update/{id}', [Category_controller::class, 'update'])->name('category.update');
 
-    //   admin products of aniket
-    
+    //admin products
 Route::Match(['get', 'post'], 'admin/Add_product', [product_controller::class, 'addProduct']);
 // to display data
 Route::get('/admin/view_products', [product_controller::class, 'viewProducts'])->name('product.display');
@@ -121,14 +121,14 @@ Route::get('/category', [usercategory_controller::class, 'view_usercategory']);
 Route::get('/products_listing/{id}',[ userproducts_controller::class,'products_listing']);
 Route::get('/product_details/{id}',[ userproducts_controller::class,'product_details']);
 Route::post('/addcart',[ cart_controller::class,'addToCart'])->name('cart');
-// web.php
-
+// cart page
 Route::get('/cart', [cart_controller::class, 'showCart'])->name('cart.show');
-
 Route::get('/cart/remove/{cartItemId}', [cart_controller::class, 'removeFromCart'])->name('remove-from-cart');
-
 Route::post('update-cart-quantity', [Cart_controller::class, 'updateCartQuantity'])->name('update-cart-quantity');
-
+// checkout page
+Route::get('/checkout', [checkout_controller::class,'showCheckoutForm'])->name('checkout');
+Route::post('/checkout', [checkout_controller::class, 'processPayment'])->name('process.payment');
+Route::get('/thankyou', [thankyou_controller::class, 'index'])->name('thankyou');
 
 
 

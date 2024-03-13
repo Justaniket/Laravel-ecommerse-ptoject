@@ -4,8 +4,7 @@
 <div class="container">
    
     <h2>Your Cart</h2>
-
-    @if($cartItems->isEmpty())
+   @if($cartItems->isEmpty())
         <p>Your cart is empty.</p>
     @else
         <table class="table">
@@ -69,7 +68,9 @@
             <h3>SubTotal: <span class="subtotal">${{ $total }}</span></h3>
         </div>
     @endif
-   
+    <div class="d-flex justify-content-center">
+        <a href="{{ route('checkout') }}" class="btn btn-primary">Proceed to Checkout</a>
+    </div>
 </div>
 
 <!-- Include jQuery -->
@@ -110,7 +111,7 @@
                         $totalPriceCell.text('$' + response.updatedTotal.toFixed(2));
 
                         // Reload the page after a successful update
-                        location.reload();
+                      location.reload();
                         
                     } 
                     else {

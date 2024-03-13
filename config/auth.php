@@ -76,14 +76,14 @@ return [
             'model' => App\Models\User::class,
         ],
         
-        'trainerusers' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Traineruser::class,
-        ],
+        // 'trainerusers' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\Traineruser::class,
+        // ],
 
         // 'users' => [
         //     'driver' => 'database',
-        //     'table' => 'users',
+        //     'model' => 'App\Models\users::class',
         // ],
     ],
 

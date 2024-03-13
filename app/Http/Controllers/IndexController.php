@@ -39,22 +39,11 @@ use Session;
 class IndexController extends Controller
 {
     public function index(){
-        $ppt = Ppt::get();
-        $testimonials = Testimonials::get();
-        return view('index', compact('ppt','testimonials'));
+        
+        return view('index');
     }
     
-    public function index1(){
-        $ppt = Ppt::get();
-        $testimonials = Testimonials::get();
-        $today = date('d-m-Y H:i:s');
-        $release_date = '15-09-2023 10:56:00';
-        if(strtotime($today) > strtotime($release_date)){
-            return view('index', compact('ppt','testimonials'));
-        }else{
-            return view('comingsoon');
-        }
-    }
+    
 
     public function comingSoon(){
         return view('comingsoon');
