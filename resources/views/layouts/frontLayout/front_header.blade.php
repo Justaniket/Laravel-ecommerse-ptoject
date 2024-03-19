@@ -40,7 +40,14 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img alt="Generic placeholder image" src="{{asset('img/user/4.png')}}" class="nav-osahan-pic rounded-pill"> My Account </a>
+                        @auth
+                           
+                            {{ Auth::user()->name }}
+                        @else
+                            <img alt="Generic placeholder image" src="{{ asset('img/user/4.png') }}" class="nav-osahan-pic rounded-pill">
+                            My Account
+                        @endif
+                    </a>
                     <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
                         <a class="dropdown-item" href="orders.html#orders">
                             <i class="icofont-food-cart"></i> Orders </a>

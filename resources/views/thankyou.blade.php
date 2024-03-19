@@ -10,6 +10,8 @@
                 <p>Your order has been successfully placed.</p>
                 <p>Order ID: {{ $order_id }}</p>
                 <p>Total Amount: ${{ $total }}</p>
+                <p>Payment Id: {{ $payment_id }}</p>
+
                 <!-- You can customize this page further based on your needs -->
             </div>
         </div>

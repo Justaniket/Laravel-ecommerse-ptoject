@@ -10,7 +10,7 @@ class thankyou_controller extends Controller
     {
         $order_id = $request->order_id;
         $total = $request->total;
-
-        return view('thankyou', compact('order_id', 'total'));
+        $payment_id=$request->payment_id;
+        return view('thankyou', compact('order_id', 'total','payment_id'));
     }
 }
