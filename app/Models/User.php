@@ -43,4 +43,11 @@ class User extends Authenticatable
     public function isOnline(){
         return Cache::has('user-is-online-' . $this->id);
     }
+
+    public function orders()
+{
+    return $this->hasMany(Order::class, 'customer_id');
 }
+
+}
+

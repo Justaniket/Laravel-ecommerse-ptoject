@@ -54,9 +54,10 @@
                         </a>
                       </li>
                     </ul>
-                  </li>
-               
-                
+                   </li>
+               <a href="{{route('admin.orders')}}" class="nav-link">
+                    <p> Orders </p>
+                  </a>
             </ul>
         </nav>  
     </div>

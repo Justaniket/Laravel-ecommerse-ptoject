@@ -1,4 +1,4 @@
-@php $date = date('D, d M Y'); @endphp
+{{-- @php $date = date('D, d M Y'); @endphp --}}
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -13,7 +13,7 @@
       <!-- Messages Dropdown Menu -->
 
         <li class="nav-item nav-link mb-clock">
-            <h6 style="color: #4C4C4C; padding: 0px 12px 0px 12px; margin-top: 5px;"><i class="fa fa-clock"></i> <?php echo $date; ?> 
+            {{-- <h6 style="color: #4C4C4C; padding: 0px 12px 0px 12px; margin-top: 5px;"><i class="fa fa-clock"></i> <?php echo $date; ?>  --}}
             <!-- <span id="clock"></span> -->
           </h6>
         </li>

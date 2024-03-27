@@ -7,19 +7,23 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class sendMail extends Mailable
+class OrderMail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $orderDetails;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($orderDetails)
+    // public $order;
+    // public $orderDetails;
+    public $messageData;
+    public function __construct( $messageData)
     {
-        $this->orderDetails = $orderDetails;
+        // $this->order = $order;
+        // $this->status = $orderDetails;
+        $this->messageData = $messageData;
     }
 
     /**
@@ -29,6 +33,7 @@ class sendMail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.placed_order')->subject('Order Confirmation');
+        return $this->view('emails.order_status')
+        ->with($this->messageData);
     }
 }

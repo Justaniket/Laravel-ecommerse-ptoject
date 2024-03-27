@@ -16,10 +16,10 @@ class CreateOrderTable extends Migration
         Schema::create('order', function (Blueprint $table) {
             $table->id();
             $table->string('address');
-            $table->integer('grand total');
-            $table->integer('customerId');
-            $table->string('order status')->default('Inprocess');
-            $table->string('payment method')->default('Razorpay');
+            $table->integer('grand_total');
+            $table->integer('customer_id');
+            $table->string('order_status')->default('Inprocess');
+            $table->string('payment_method')->default('Razorpay');
             $table->timestamps();
         });
     }

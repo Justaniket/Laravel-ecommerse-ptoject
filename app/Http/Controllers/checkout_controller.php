@@ -87,7 +87,7 @@ class checkout_controller extends Controller
     ];
     
     $email = Auth::user()->email;
-    Mail::send('emails.send_email', $data, function($message) use ($email) {
+    Mail::send('emails.placed_order', $data, function($message) use ($email) {
         $message->to($email)->subject('Order Details');
     });
     $client = new \GuzzleHttp\Client([
@@ -112,10 +112,7 @@ class checkout_controller extends Controller
         \Log::error('Razorpay payment capture failed: ' . $response->getBody());
         return redirect()->back()->with('error', 'Payment capture failed. Please try again.');
     }}
-// } catch (\Exception $e) {
-//     \Log::error('Razorpay capture failed: ' . $e->getMessage());
-//     return redirect()->back()->with('error', 'Payment capture failed. Please try again.');
-// }
+
 }
 
 

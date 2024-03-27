@@ -15,11 +15,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Admin\Category_controller;
 use App\Http\Controllers\Admin\product_controller;
+use App\Http\Controllers\Admin\order_controller;
 use App\Http\Controllers\userproducts_controller;
 use App\Http\Controllers\usercategory_controller;
 use App\Http\Controllers\cart_controller;
 use App\Http\Controllers\checkout_controller;
-use App\Http\Controllers\thankyou_controller;
+use App\Http\Controllers\thankyou_controller;           
 
 
 Route::get('/clear', function () {
@@ -73,7 +74,7 @@ Route::get('/user-logout',[UsersController::class, 'logout']);
 
  
   
-// });
+// })});
 
 
 
@@ -107,6 +108,13 @@ Route::middleware([Adminlogin::class])->group(function () {
       // update
       Route::post('/admin/update/{id}', [Category_controller::class, 'update'])->name('category.update');
 
+    //   admin orders
+    Route::get('/admin/orders',[order_controller::class,'index'])->name('admin.orders');
+    Route::Match(['get', 'post'], 'update-order-status', [order_controller::class, 'updateStatus']);
+     Route::get('/admin/order_details/{order_id}',[order_controller::class,'orderDetails'])->name('admin.order_details');
+   
+
+
     //admin products
 Route::Match(['get', 'post'], 'admin/Add_product', [product_controller::class, 'addProduct']);
 // to display data
@@ -129,7 +137,7 @@ Route::post('update-cart-quantity', [Cart_controller::class, 'updateCartQuantity
 Route::get('/checkout', [checkout_controller::class,'showCheckoutForm'])->name('checkout');
 Route::post('/checkout', [checkout_controller::class, 'processPayment'])->name('process.payment');
 Route::get('/thankyou', [thankyou_controller::class, 'index'])->name('thankyou');
-// Route::post('/payment/webhook', [Checkout_controller::class, 'handlePaymentWebhook']);
+
 
 
 
